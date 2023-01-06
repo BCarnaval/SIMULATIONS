@@ -1,7 +1,7 @@
 <h1 align="center">PHQ-404 Méthodes numériques et simulations</h1>
 
 <div align="center">
-  <img width="380" height="280" src="./figs/article-1.png">
+  <img width="480" height="280" src="./figs/figure_readme.png">
 </div>
 
 <br />
