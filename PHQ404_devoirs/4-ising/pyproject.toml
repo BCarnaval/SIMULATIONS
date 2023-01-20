@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "4-ising"
+name = "ising"
 version = "0.1.0"
 description = ""
 authors = ["BCarnaval <antoinedelagrave@hotmail.com>"]
