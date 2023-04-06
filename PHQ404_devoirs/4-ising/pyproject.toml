@@ -7,7 +7,11 @@ authors = ["BCarnaval <antoinedelagrave@hotmail.com>"]
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
 scipy = "^1.10.0"
-numpy = "1.21.1"
+numpy = "^1.23.1"
+matplotlib = "^3.7.1"
+numba = "^0.56.4"
+rich = "^13.3.3"
+snakeviz = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
