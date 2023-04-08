@@ -8,6 +8,12 @@ import matplotlib.pyplot as plt
 from ising import Observable, ising_aleatoire
 
 
+DATAPATH = './ising/data/'
+FIGPATH = './ising/figs/'
+# DATAPATH = 'data/'
+# FIGPATH = 'figs/'
+
+
 def simulate(temperatures: np.ndarray, update: int = 1000, levels: int = 16,
              warmup: int = 1000000, grid_size: int = 32,
              save: bool = False) -> None:
@@ -34,16 +40,17 @@ def simulate(temperatures: np.ndarray, update: int = 1000, levels: int = 16,
 
     save: bool, default=False
         If set to True, saves energies, magnetization and correlation time data
-        as text files in directory './ising/data'.
+        as text files in directory DATAPATH.
     """
     # Initializing data arrays
     energy_array = np.zeros(shape=(len(temperatures), 3))
     magn_array = np.zeros(shape=(len(temperatures), 3))
     tau_array = np.zeros(shape=(len(temperatures), 3))
 
+    ising = ising_aleatoire(temperature=4.0, taille=grid_size)
     for idx, t in enumerate(temperatures):
         # Init ising object using random spins grid
-        ising = ising_aleatoire(temperature=t, taille=grid_size)
+        ising.temperature = t
 
         # Init energy & magnetization observables
         E = Observable(nombre_niveaux=levels)
@@ -57,7 +64,7 @@ def simulate(temperatures: np.ndarray, update: int = 1000, levels: int = 16,
             # Collect observables each 'update'
             ising.simulation(update)
 
-            E.ajout_mesure(ising.energie)
+            E.ajout_mesure(ising.calcule_energie())
             M.ajout_mesure(ising.calcule_aimantation())
 
             if E.est_rempli() and M.est_rempli():
@@ -83,7 +90,7 @@ def simulate(temperatures: np.ndarray, update: int = 1000, levels: int = 16,
                 break
 
     if save:
-        save_path = './ising/data/'
+        save_path = DATAPATH
 
         # Energy data
         np.savetxt(fname=f'{save_path}energy.txt',
@@ -103,7 +110,7 @@ def simulate(temperatures: np.ndarray, update: int = 1000, levels: int = 16,
     return
 
 
-def plot_data(data_path: str = './ising/data/',
+def plot_data(data_path: str = DATAPATH,
               save_figs: bool = False) -> None:
     """Plots energies, magnetization and correlation time using saved textfiles
     stored in './ising/data' directory.
@@ -117,7 +124,7 @@ def plot_data(data_path: str = './ising/data/',
         If set to True, saves plots in predetermined directory './ising/figs/'.
     """
     # Global attributes & variables
-    save_path = './ising/figs/'
+    save_path = FIGPATH
 
     # Retreive arrays
     energy_array = np.loadtxt(f'{data_path}energy.txt')
@@ -136,9 +143,10 @@ def plot_data(data_path: str = './ising/data/',
     plt.xlabel('Temperatures')
     plt.ylabel('Means')
     plt.legend()
+    plt.tight_layout()
 
     if save_figs:
-        plt.savefig(save_path + 'means.png')
+        plt.savefig(save_path + 'means.png', dpi=1200)
 
     plt.show()
 
@@ -148,9 +156,10 @@ def plot_data(data_path: str = './ising/data/',
     plt.xlabel('Temperatures')
     plt.ylabel('Correlation time')
     plt.legend()
+    plt.tight_layout()
 
     if save_figs:
-        plt.savefig(save_path + 'taus.png')
+        plt.savefig(save_path + 'taus.png', dpi=1200)
 
     plt.show()
 
@@ -158,4 +167,4 @@ def plot_data(data_path: str = './ising/data/',
 
 
 if __name__ == "__main__":
-    pass
+    plot_data(save_figs=True)

@@ -52,29 +52,21 @@ class Ising:
     def difference_energie(self, x, y):
         """Retourne la différence d'énergie si le spin à la position (x, y)
         était renversé.
+
+        Arguments
+        ---------
+        x, y : int, int, default=None
+            Les coordonnées du spin à inverser.
         """
-        energy0 = 0
         n = self.taille
+        energ = self.spins[(x + 1) % n, y]
+        energ += self.spins[x, (y + 1) % n]
+        energ += self.spins[(x - 1) % n, y]
+        energ += self.spins[x, (y - 1) % n]
+        energie0 = energ * self.spins[x, y]
 
-        # Local energy at position (x, y)
-        energy0 += self.spins[x, y] * self.spins[(x + 1) % n, y]
-        energy0 += self.spins[x, y] * self.spins[x, (y + 1) % n]
-        energy0 += self.spins[x, y] * self.spins[(x - 1) % n, y]
-        energy0 += self.spins[x, y] * self.spins[x, (y - 1) % n]
-
-        # Flip spin
-        self.spins[x, y] *= -1
-
-        # Local energy at position (x, y)
-        energy0 -= self.spins[x, y] * self.spins[(x + 1) % n, y]
-        energy0 -= self.spins[x, y] * self.spins[x, (y + 1) % n]
-        energy0 -= self.spins[x, y] * self.spins[(x - 1) % n, y]
-        energy0 -= self.spins[x, y] * self.spins[x, (y - 1) % n]
-
-        # Back to initial configuration
-        self.spins[x, y] *= -1
-
-        return energy0
+        dE = 2*energie0
+        return dE
 
     def iteration_aleatoire(self):
         """Renverse un spin aléatoire avec probabilité ~ e^(-ΔE / T).
@@ -91,7 +83,7 @@ class Ising:
             # Update 'energie' attribute accordingly
             self.energie += delta_energy
 
-        elif delta_energy > 0:
+        else:
             pointer = np.random.rand()
             prob = np.exp(-delta_energy / self.temperature)
             if pointer <= prob:
@@ -105,6 +97,10 @@ class Ising:
 
     def simulation(self, nombre_iterations):
         """Simule le système en effectuant des itérations aléatoires.
+
+        Arguments
+        ---------
+        nombre_iterations : Le nombre d'itération a simuler
         """
         for _ in range(nombre_iterations):
             self.iteration_aleatoire()
@@ -153,6 +149,9 @@ class Observable:
         # Voir les notes de cours pour plus de détails.
         self.niveau_erreur = self.nombre_niveaux - 6
 
+        # vérification si le dernier niveau est remplis
+        self._est_rempli = False
+
     def ajout_mesure(self, valeur, niveau=0):
         """Ajoute une mesure.
 
@@ -163,6 +162,9 @@ class Observable:
                  le niveau doit toujours être 0. Les autres niveaux
                  sont seulement utilisé pour la récursion.
         """
+        if niveau == self.nombre_niveaux:
+            self._est_rempli = True
+
         self.nombre_valeurs[niveau] += 1
         self.sommes[niveau] += valeur
         self.sommes_carres[niveau] += valeur**2
@@ -180,37 +182,40 @@ class Observable:
     def est_rempli(self) -> bool:
         """Retourne vrai si le binnage est complété.
         """
-        return True if self.sommes[self.nombre_niveaux] != 0.0 else False
+        return self._est_rempli
+
+    def bin_tcheck(self):
+        """Vérifie si le binning est completé, et génère un erreur
+        s'il n'est pas complété.
+        """
+        if not self.est_rempli():
+            raise "Le binning est pas terminé!"
+        return
 
     def erreur(self) -> float:
         """Retourne l'erreur sur la mesure moyenne de l'observable.
 
         Le dernier niveau doit être rempli avant d'utiliser cette fonction.
         """
-        erreurs = np.zeros(self.nombre_niveaux + 1)
-        erreurs[self.niveau_erreur] = np.sqrt(
-            (
-                self.sommes_carres[self.niveau_erreur]
-                - self.sommes[self.niveau_erreur]**2 /
-                self.nombre_valeurs[self.niveau_erreur]
-            ) / (
-                self.nombre_valeurs[self.niveau_erreur]
-                * (self.nombre_valeurs[self.niveau_erreur] - 1)
-            )
-        )
-        return erreurs[self.niveau_erreur]
+        self.bin_tcheck()
+        erreur = np.sqrt(self.variance(self.niveau_erreur))
+        return erreur
 
     def variance(self, niveau: int) -> float:
-        """Docs
+        """ Calcule la variance du niveau en question. Ici, on utilise le
+        calcule de variance qui était présent dans le code initiale.
+
+        Parameters
+        ----------
+        niveau: le niveau ou on calcule la variance
         """
         N = self.nombre_valeurs[niveau]
         var = 1/(N-1) * \
             (self.sommes_carres[niveau] - self.sommes[niveau]**2 / N)
-
-        return var
+        return var/N
 
     def temps_correlation(self):
-        """Retourne le temps de corrélation.
+        """calcule et retourne le temps de corrélation.
         """
         erreur_0 = self.variance(0)
         erreur_inf = self.variance(self.niveau_erreur)
@@ -219,7 +224,10 @@ class Observable:
 
     def moyenne(self):
         """Retourne la moyenne des mesures.
+
+        Le dernier niveau doit être rempli avant d'utiliser cette fonction.
         """
+        self.bin_tcheck()
         return self.sommes[-1]
 
 
