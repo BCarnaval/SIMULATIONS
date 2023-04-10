@@ -107,15 +107,14 @@ class ChaosAttractor:
                      )
 
         handles, labels = axs.get_legend_handles_labels()
+        axs.set_xlabel(r'$X$')
+        axs.set_ylabel(r'$Y$')
+        axs.set_zlabel(r'$Z$')
+        axs.legend(handles=handles, labels=labels)
 
         if save:
             plt.savefig(f'./attractors/figs/trajectories/traj_{self.name}.png')
 
-        axs.set_xlabel(r'$X$')
-        axs.set_ylabel(r'$Y$')
-        axs.set_zlabel(r'$Z$')
-
-        axs.legend(handles=handles, labels=labels)
         plt.show()
 
         return
