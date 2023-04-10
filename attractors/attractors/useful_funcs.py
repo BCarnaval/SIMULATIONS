@@ -24,7 +24,7 @@ def time_iters(func):
     return time_iters_wrapper
 
 
-def nth_epsilon(serie: np.ndarray):
+def epsilon(serie: np.ndarray):
     """Computes the convergence of a series using the epsilon algorithm.
 
     Parameters

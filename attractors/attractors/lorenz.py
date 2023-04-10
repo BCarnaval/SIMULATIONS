@@ -8,11 +8,23 @@ from attractor import ChaosAttractor
 
 
 class Lorenz(ChaosAttractor):
-    """Docs
+    """Lorenz attractors specific attributes and methods.
+
+    Attributes
+    ----------
+    name: str, default=None
+        Name of the attractor given by user.
+
+    init_state: np.ndarray, shape=(3, ), default=None
+        Initial position of the particle.
+
+    time_domain: np.ndarray, shape=(n, ), default=None
+        Time domain of the simulation.
     """
 
     def __init__(self, name, init_state, time_domain) -> None:
-        """Docs
+        """Associating class attributes and setup inheritance with
+        'ChaosAttractor' objects.
         """
         self.sigma, self.rho, self.beta = 10, 28, 8/3
         super().__init__(name, init_state, time_domain)
@@ -21,7 +33,18 @@ class Lorenz(ChaosAttractor):
         return self.ts.shape[0]
 
     def get_jacobian_matrix(self, position: np.ndarray) -> np.ndarray:
-        """Docs
+        """Compute jacobian matrix of the system at a specific position of the
+        trajectory.
+
+        Parameters
+        ----------
+        position: np.ndarray, shape=(3, ), default=None
+            Position at which compute the jacobian.
+
+        Returns
+        -------
+        jacobian: np.ndarray, shape=(3, 3)
+            Jacobian matrix evaluated at specific position.
         """
         x, y, z = position
         jacobian = np.array([
@@ -32,7 +55,7 @@ class Lorenz(ChaosAttractor):
         return jacobian
 
     def differential_system(self, r: np.ndarray, ts: np.ndarray) -> np.ndarray:
-        """Docs
+        """Defines the differential equations system of Lorenz attractor.
         """
         # Initial position
         x, y, z = r
@@ -46,13 +69,12 @@ class Lorenz(ChaosAttractor):
 
 
 if __name__ == '__main__':
-    state0 = np.array([1, 1, 1])
-    time = np.linspace(0, 100, 100000)
+    state0 = np.array([1, 0, 1])
+    time = np.linspace(0, 100, 10000)
 
     ex = Lorenz(name='lorenz',
                 init_state=state0,
                 time_domain=time
                 )
 
-    lyaps = ex.compute_lyapunovs()
-    print(lyaps)
+    ex.plot_trajectory(save=True)

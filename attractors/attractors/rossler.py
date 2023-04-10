@@ -8,12 +8,24 @@ from attractor import ChaosAttractor
 
 
 class Rossler(ChaosAttractor):
-    """Docs
+    """Rossler attractors specific attributes and methods.
+
+    Attributes
+    ----------
+    name: str, default=None
+        Name of the attractor given by user.
+
+    init_state: np.ndarray, shape=(3, ), default=None
+        Initial position of the particle.
+
+    time_domain: np.ndarray, shape=(n, ), default=None
+        Time domain of the simulation.
     """
 
     def __init__(self, name: str, init_state: np.ndarray,
                  time_domain: np.ndarray) -> None:
-        """Docs
+        """Associating class attributes and setup inheritance with
+        'ChaosAttractor' objects.
         """
         self.alpha, self.beta, self.gamma = 0.2, 0.2, 5.7
         super().__init__(name, init_state, time_domain)
@@ -22,7 +34,18 @@ class Rossler(ChaosAttractor):
         return self.ts.shape[0]
 
     def get_jacobian_matrix(self, position: np.ndarray) -> np.ndarray:
-        """Docs
+        """Compute jacobian matrix of the system at a specific position of the
+        trajectory.
+
+        Parameters
+        ----------
+        position: np.ndarray, shape=(3, ), default=None
+            Position at which compute the jacobian.
+
+        Returns
+        -------
+        jacobian: np.ndarray, shape=(3, 3)
+            Jacobian matrix evaluated at specific position.
         """
         r = position
         jacobian = np.array([
@@ -33,7 +56,7 @@ class Rossler(ChaosAttractor):
         return jacobian
 
     def differential_system(self, r: np.ndarray, ts: np.ndarray) -> np.ndarray:
-        """Docs
+        """Defines the differential equations system of Rossler attractor.
         """
         # Initial position
         x, y, z = r
@@ -48,12 +71,11 @@ class Rossler(ChaosAttractor):
 
 if __name__ == '__main__':
     state0 = np.array([0, 1, -1])
-    time = np.linspace(0, 1000, 100000)
+    time = np.linspace(0, 500, 10000)
 
     ex = Rossler(name='rossler',
                  init_state=state0,
                  time_domain=time
                  )
 
-    lyaps = ex.compute_lyapunovs()
-    print(lyaps)
+    ex.plot_lyapunovs()
