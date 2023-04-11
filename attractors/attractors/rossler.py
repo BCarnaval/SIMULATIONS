@@ -12,18 +12,19 @@ class Rossler(ChaosAttractor):
 
     Attributes
     ----------
-    name: str, default=None
+    name: str, default='rossler'
         Name of the attractor given by user.
 
-    init_state: np.ndarray, shape=(3, ), default=None
+    init_state: np.ndarray, shape=(3, ), default=np.array([1, 1, -1])
         Initial position of the particle.
 
-    time_domain: np.ndarray, shape=(n, ), default=None
+    time_domain: np.ndarray, shape=(n, ), default=np.linspace(0, 500, 10000)
         Time domain of the simulation.
     """
 
-    def __init__(self, name: str, init_state: np.ndarray,
-                 time_domain: np.ndarray) -> None:
+    def __init__(self, name: str = 'rossler',
+                 init_state: np.ndarray = np.array([1, 1, -1]),
+                 time_domain: np.ndarray = np.linspace(0, 500, 10000)) -> None:
         """Associating class attributes and setup inheritance with
         'ChaosAttractor' objects.
         """
@@ -70,12 +71,4 @@ class Rossler(ChaosAttractor):
 
 
 if __name__ == '__main__':
-    state0 = np.array([1, 1, -1])
-    time = np.linspace(0, 500, 10000)
-
-    ex = Rossler(name='rossler',
-                 init_state=state0,
-                 time_domain=time
-                 )
-
-    ex.plot_lyapunovs(save=True)
+    ex = Rossler()

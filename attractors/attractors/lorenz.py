@@ -12,17 +12,19 @@ class Lorenz(ChaosAttractor):
 
     Attributes
     ----------
-    name: str, default=None
+    name: str, default='lorenz'
         Name of the attractor given by user.
 
-    init_state: np.ndarray, shape=(3, ), default=None
+    init_state: np.ndarray, shape=(3, ), default=np.array([1, 0, -1])
         Initial position of the particle.
 
-    time_domain: np.ndarray, shape=(n, ), default=None
+    time_domain: np.ndarray, shape=(n, ), default=np.linspace(0, 100, 10000)
         Time domain of the simulation.
     """
 
-    def __init__(self, name, init_state, time_domain) -> None:
+    def __init__(self, name: str = 'lorenz',
+                 init_state: np.ndarray = np.array([1, 0, -1]),
+                 time_domain: np.ndarray = np.linspace(0, 100, 10000)) -> None:
         """Associating class attributes and setup inheritance with
         'ChaosAttractor' objects.
         """
@@ -69,12 +71,4 @@ class Lorenz(ChaosAttractor):
 
 
 if __name__ == '__main__':
-    state0 = np.array([1, 0, 1])
-    time = np.linspace(0, 100, 10000)
-
-    ex = Lorenz(name='lorenz',
-                init_state=state0,
-                time_domain=time
-                )
-
-    ex.plot_lyapunovs(save=True)
+    ex = Lorenz()

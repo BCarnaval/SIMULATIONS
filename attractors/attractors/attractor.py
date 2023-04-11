@@ -249,24 +249,5 @@ class ChaosAttractor:
         return
 
 
-class Simulation:
-    """Attractor objects definition.
-
-    Attributes
-    ----------
-    """
-
-    def __init__(self, name: str, system: ChaosAttractor) -> None:
-        """Docs
-        """
-        self.name = name
-        self.system = system
-
-    def __repr__(self) -> None:
-        """Docs
-        """
-        return str(" ".join(["Attractor", self.name, "stored."]))
-
-
 if __name__ == "__main__":
     pass
