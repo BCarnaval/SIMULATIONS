@@ -70,7 +70,7 @@ class Rossler(ChaosAttractor):
 
 
 if __name__ == '__main__':
-    state0 = np.array([0, 1, -1])
+    state0 = np.array([1, 1, -1])
     time = np.linspace(0, 500, 10000)
 
     ex = Rossler(name='rossler',
@@ -78,4 +78,4 @@ if __name__ == '__main__':
                  time_domain=time
                  )
 
-    ex.plot_trajectory(save=True)
+    ex.plot_lyapunovs(save=True)

@@ -78,4 +78,5 @@ if __name__ == '__main__':
                 time_domain=time
                 )
 
-    ex.plot_trajectory(save=True)
+    ex.plot_trajectory()
+    ex.plot_lyapunovs(save=True)

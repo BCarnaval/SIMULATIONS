@@ -210,7 +210,7 @@ class ChaosAttractor:
         sols = sp.integrate.odeint(lambda A, t: LES(A), state0, self.ts)
 
         # Retreive Lyapunov exponents from concatenated array
-        lyaps = (sols[5:, 12:15].T / self.ts[5:]).T
+        lyaps = (sols[50:, 12:15].T / self.ts[50:]).T
         l_1, l_2, l_3 = lyaps[:, 0], lyaps[:, 1], lyaps[:, 2]
 
         return l_1, l_2, l_3
@@ -227,11 +227,13 @@ class ChaosAttractor:
         # Global plot attributes
         colors = ['C0', 'C1', 'C2']
         labels = ['$L_1$', '$L_2$', '$L_3$']
-        l_1, l_2, l_3 = self.compute_lyapunovs()
+        lyaps = self.compute_lyapunovs()
+        extraps = [ufs.epsilon(lyapunov) for lyapunov in lyaps]
 
         # Using a loop to plot whole spectrum
-        for lyap, label, color in zip([l_1, l_2, l_3], labels, colors):
-            plt.plot(self.ts[5:], lyap, label=label)
+        for lyap, label, color, extra in zip(lyaps, labels, colors, extraps):
+            plt.plot(self.ts[50:], lyap, label=label +
+                     r'$\simeq{:.2f}$'.format(extra))
             plt.hlines(xmin=self.ts[0], xmax=self.ts[-1], y=ufs.epsilon(
                 lyap), linestyle='dashdot', lw=0.5, color=color)
 
