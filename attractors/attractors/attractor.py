@@ -173,34 +173,58 @@ class ChaosAttractor:
         return
 
     def compute_lyapunovs(self) -> tuple[np.ndarray]:
-        """Docs
+        """Computes Lyapunov spectrum for given chaotic attractor and outputs
+        the evolution of the spectrum using the same time domain as the actual
+        trajectory simulation.
         """
-        def diff_system(state: np.ndarray):
-            """Docs
+        def diff_system(state: np.ndarray) -> tuple[np.ndarray]:
+            """Defines the differential equations system and associated
+            jacobian matrix at given coordinates.
+
+            Parameters
+            ----------
+            state: np.ndarray, shape=(3, ), defualt=None
+                Coordinates at which evaluate the system evolution & jacobian.
             """
             diff = self.differential_system(state, self.ts)
             J = self.get_jacobian_matrix(state)
             return diff, J
 
-        def LES(state: np.ndarray):
-            """Docs
+        def LES(concat_state: np.ndarray) -> np.ndarray:
+            """Defines a differential equations system using the contraction
+            hypersphere evolution over time using the jacobian matrix.
+
+            Parameters
+            ----------
+            concat_state: np.ndarray, shape=(15, ), default=None
+                Concatenated array of position (3, 1), contraction rate (3, 3)
+                and lyapunov spectrum (3, 1) arrays at time index t.
+
+            Returns
+            -------
+            _: np.ndarray, shape=(15, )
+                Concatenated array at time index t + 1
             """
-            U = state[3:12].reshape([3, 3])
+            # Phase space contraction/expansion matrix
+            U = concat_state[3:12].reshape([3, 3])
 
-            f, df = diff_system(state[:3])
-            A = U.T.dot(df.dot(U))
-            dl = np.diag(A).copy()
+            # Current position & Jacobian matrix
+            f, J = diff_system(concat_state[:3])
 
+            R = U.T @ (J @ U)  # Computing contraction/expansion rate
+            dL = np.diag(R).copy()
+
+            # Making R skew-symmetric matrix
             for i in range(3):
-                A[i, i] = 0
+                R[i, i] = 0
                 for j in range(i + 1, 3):
-                    A[i, j] = -A[j, i]
+                    R[i, j] = -R[j, i]
 
-            dU = U.dot(A)
+            dU = U @ R
 
-            return np.concatenate([f, dU.flatten(), dl])
+            return np.concatenate([f, dU.flatten(), dL])
 
-        # Initializing positon, tangent vector and Lyapunov spectrum
+        # Initializing positon, propagator and Lyapunov spectrum
         r = self.r
         U = np.eye(3)
         L = np.zeros(3)
