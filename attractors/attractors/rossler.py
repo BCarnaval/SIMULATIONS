@@ -24,7 +24,7 @@ class Rossler(ChaosAttractor):
 
     def __init__(self, name: str = 'rossler',
                  init_state: np.ndarray = np.array([1, 1, -1]),
-                 time_domain: np.ndarray = np.linspace(0, 500, 10000)) -> None:
+                 time_domain: np.ndarray = np.linspace(0, 250, 3000)) -> None:
         """Associating class attributes and setup inheritance with
         'ChaosAttractor' objects.
         """
@@ -72,3 +72,4 @@ class Rossler(ChaosAttractor):
 
 if __name__ == '__main__':
     ex = Rossler()
+    ex.animate_trajectory(show=False)
