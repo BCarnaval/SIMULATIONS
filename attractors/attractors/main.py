@@ -8,7 +8,7 @@ from rossler import Rossler
 
 
 def main() -> None:
-    """Docs
+    """Runs global tasks using all other modules.
     """
     # Test using Lorenz system
     L = Lorenz()

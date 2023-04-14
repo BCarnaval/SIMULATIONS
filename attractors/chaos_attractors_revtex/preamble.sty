@@ -8,7 +8,7 @@
 \usepackage{xcolor}
 \definecolor{YALE1_MASTER}{RGB}{9, 55, 110} % #09376e
 \usepackage{graphicx}
-\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry}
 \usepackage{adjustbox}
 \usepackage{placeins}
 \usepackage[T1]{fontenc}
@@ -44,6 +44,9 @@
 \let\up\textsuperscript
 
 \bibliographystyle{apsrev4-2}
+
+% Vectors upright convention
+\renewcommand{\bm}[1]{\mathbf{#1}}
 
 % Add space and comma between equations
 \newcommand{\beq}{,\hspace{0.5cm}}

@@ -23,7 +23,7 @@ class Bouali(ChaosAttractor):
     """
 
     def __init__(self, name: str = 'bouali',
-                 init_state: np.ndarray = np.array([0.2, 0.2, -0.08]),
+                 init_state: np.ndarray = np.array([0.2, 0.2, -0.01]),
                  time_domain: np.ndarray = np.linspace(0, 500, 10000)) -> None:
         """Associating class attributes and setup inheritance with
         'ChaosAttractor' objects.
@@ -72,3 +72,4 @@ class Bouali(ChaosAttractor):
 
 if __name__ == '__main__':
     ex = Bouali()
+    ex.plot_lyapunovs(save=True)

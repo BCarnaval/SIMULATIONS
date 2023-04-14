@@ -45,6 +45,8 @@ class ChaosAttractor:
         self.trajectory = self.compute_trajectory(state0=init_state)
 
     def __len__(self) -> int:
+        """Returns the lenght of the simulation as the number of timesteps.
+        """
         return len(self.ts)
 
     def differential_system(self, r: np.ndarray, ts: np.ndarray) -> np.ndarray:
@@ -257,7 +259,7 @@ class ChaosAttractor:
         # Using a loop to plot whole spectrum
         for lyap, label, color, extra in zip(lyaps, labels, colors, extraps):
             plt.plot(self.ts[50:], lyap, label=label +
-                     r'$\simeq{:.2f}$'.format(extra))
+                     r'$\simeq{:.3f}$'.format(extra))
             plt.hlines(xmin=self.ts[0], xmax=self.ts[-1], y=ufs.epsilon(
                 lyap), linestyle='dashdot', lw=0.5, color=color)
 
