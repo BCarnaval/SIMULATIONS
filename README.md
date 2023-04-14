@@ -19,18 +19,3 @@
   <a href="">![LaTeX](https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white)</a>
   
 </div>
-
-## Table of contents
-
-- [Requirements](#requirements)
-  - [Poetry (optionnal)](#poetry-optionnal)
-  - [Project dependencies](#project-dependencies)
-- [Documentation](#documentation)
-
-## Requirements
-
-### Poetry (optionnal)
-
-### Project dependencies
-
-## Documentation
