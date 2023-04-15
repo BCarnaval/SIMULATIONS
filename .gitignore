@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Matplotlib personnal config.
+matplotlibrc
+
 # MacOS meta-data (Desktop Services Store)
 .DS_Store
 
