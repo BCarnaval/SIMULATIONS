@@ -7,7 +7,7 @@
 <br />
 
 <div align="center">
-  This repository contains PHQ-404 related content such as homework, theory and final project.
+  Ce dépôt est essentiellement le contenu du cours PHQ-404 c.-à.-d. la solution aux devoirs, le projet final ainsi que les notes de cours.
 </div>
 
 <br />
