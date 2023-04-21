@@ -1,0 +1,116 @@
+% --------------------
+% Color theme settings
+% --------------------
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+
+% --------------------
+% Language settings
+% --------------------
+\usepackage[style=verbose]{biblatex}
+\usepackage[greek, english, french]{babel} % Using different languages
+% File is created and written to disk by the above package
+\begin{filecontents}{refs.bib}
+@article{lorenz,
+      author = "Edward N. Lorenz",
+      title = "Deterministic Nonperiodic Flow",
+      journal = "Journal of Atmospheric Sciences",
+      year = "1963",
+      publisher = "American Meteorological Society",
+      address = "Boston MA, USA",
+      volume = "20",
+      number = "2",
+      pages=      "130 - 141"
+}
+@article{rossler,
+    author = {Rossler, Otto},
+    year = {1976},
+    month = {07},
+    pages = {397-398},
+    title = {An Equation for Continuous Chaos},
+    volume = {57},
+    journal = {Physics Letters A}
+}
+@misc{bouali,
+  author = {Bouali, Safieddine},
+  keywords = {Chaotic Dynamics (nlin.CD), FOS: Physical sciences, FOS: Physical sciences, 37D45},
+  title = {A 3D Strange Attractor with a Distinctive Silhouette. The Butterfly Effect Revisited},
+  publisher = {arXiv},
+  year = {2013},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+@misc{SENECH,
+  author       = "David Sénéchal",
+  title        = "Méthodes numériques et simulations",
+  month        = "March",
+  year         = "2020",
+}
+@misc{LEswiki,
+    author = "{Wikipedia contributors}",
+    title = "Lyapunov exponent --- {Wikipedia}{,} The Free Encyclopedia",
+    year = "2023"
+  }
+\end{filecontents}
+\addbibresource{refs.bib}
+
+\usepackage{bm} % Any character in bold.
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+% Vectors upright convention
+\renewcommand{\bm}[1]{\mathbf{#1}}
+\newenvironment{defblock}[1]{
+    \tcolorbox[noparskip, colback=white,
+    colframe=sweet_green, boxrule=1pt, arc=0pt, title=#1, coltitle=black]}
+    {\endtcolorbox
+}
+\newenvironment{noteblock}[1]{
+    \tcolorbox[noparskip, colback=white,
+    colframe=sweet_orange, boxrule=1pt, arc=0pt, title=#1, coltitle=black]}
+    {\endtcolorbox
+}
+\newenvironment{colorblock}[1]{
+    \tcolorbox[noparskip, colback=white,
+    colframe=sweet_blue, boxrule=1pt, arc=0pt, title=#1, coltitle=black]}
+    {\endtcolorbox
+}
+
+\definecolor{sweet_blue}{RGB}{214, 214, 239} % #09376e
+\definecolor{sweet_green}{RGB}{163, 209, 175} % #a3d1af
+\definecolor{sweet_orange}{RGB}{250, 200, 152} % #FAC898
+
+% -------------
+% Font settings
+% -------------
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+\usepackage{charter}
+
+% ------------
+% TOC settings
+% ------------
+\setbeamercolor{section in toc}{fg=black}
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}{%
+  \vspace{0.25em}\hspace{2em}{\color{sweet_blue}\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par}
+  
+% ----------------------
+% Global frames settings
+% ----------------------
+\beamertemplatenavigationsymbolsempty
+\setbeamercolor{section number projected}{fg=black, bg=sweet_blue}
+
+% -------------
+% Colored Boxes
+% -------------
+\newtcolorbox{mybox}{
+  sharp corners, tcbox width=auto limited, capture=hbox, on line,
+  colback=white, colframe=sweet_blue, arc=0pt, boxrule=1pt
+}
+
+% Classic colored boxes
+\renewcommand{\boxed}[1]{
+  \begin{mybox}
+      #1
+  \end{mybox}
+}

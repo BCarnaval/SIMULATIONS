@@ -1,0 +1,28 @@
+Mise en contexte:
+
+    - D'où viennent les attracteurs et comment a-t-on pris connaissance de ceux-ci?
+
+      Poincaré fut le premier à se rendre compte que les lois de Newton mettaient en évidence des comportements chaotiques. Il a ensuite su montrer que la solution du problème à trois corps n'avaient pas de solution analytique et c'est de là qu'il pensa: QUOTE
+      Il avait donc découvert le chaos déterministe, ce que j'ai étudier grâce aux différents modèles attractifs que je détaillerais plus tard.
+
+      Plus tard, avec l'arrivée des ordinateurs, Lorenz (1963) tente de prédire les phénomènes météorologiques en utilisant des systèmes d'équations différentielles couplées et se rend compte que leurs solutions sont très sensibles aux changement des conditions initiales (dans le cas chaotique). Cette découverte porte également le nom d'effet papillon. Ce sujet à connu une croissance très élevée ces dernières années vu l'asciension des technologies et la rapidité des ordinateurs.
+
+    - Que sont les attracteurs?
+
+      Posons que les variables d'un certain système sont les positions en trois dimensions. 
+
+      (cet espace est une représentation graphique qui montre comment les variables du système évoluent par rapport au temps)
+
+      Un attracteur de ce système serait essentiellement un sous-ensemble de l'espace tridimensionnel qui évolue dans le temps. Sous-ensemble vers lequel certaines solutions des équations du système convergent moyennant des conditions initiales favorables (bassin d'attraction). Là réside toute la subtilité de la théorie du chaos: les conditions initiales. Les attracteurs (spécifiquement chaotiques) sont des entités pour lesquelles une variation infinitésimale des conditions initiales d'une solution mènent à une divergence exponentielle par rapport à la solution initiale.
+
+      Ils apparaissent souvent dans les systèmes dynamiques dissipatifs (systèmes climatiques comme El Nino (réchauffements considérables en raison du changement de direction des vents), biologiques (Lotka-Volterra), et etc.).
+
+      On peut dire que les attracteurs modélisent de façon déterministe des comportements/systèmes chaotiques puisque l'on observe macroscopiquement une tendance très évidende. Toutefois, le chaos se trouve dans la difficulté de reproduire une certaine trajectoire. Là se trouve la subtilité des attracteurs chaotiques, car deux trajectoires voisines à un déplacement infinétismalement près peuvent se voir diverger exponentiellement.
+
+    - Quelles sont les signatures du chaos?
+
+      Soit une solution de l'espace des phases discuté plus haut, on dit qu'un attracteur est de nature chaotique si et seulement si des solutions aux conditions initiales voisines divergent exponentiellement!
+
+Théorie Trajectoires:
+
+    

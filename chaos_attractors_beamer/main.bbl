@@ -1,0 +1,149 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{bouali}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=4dec7946be84446b2607b94b2d733ace}{%
+           family={Bouali},
+           familyi={B\bibinitperiod},
+           given={Safieddine},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{4dec7946be84446b2607b94b2d733ace}
+      \strng{fullhash}{4dec7946be84446b2607b94b2d733ace}
+      \strng{bibnamehash}{4dec7946be84446b2607b94b2d733ace}
+      \strng{authorbibnamehash}{4dec7946be84446b2607b94b2d733ace}
+      \strng{authornamehash}{4dec7946be84446b2607b94b2d733ace}
+      \strng{authorfullhash}{4dec7946be84446b2607b94b2d733ace}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A 3D Strange Attractor with a Distinctive Silhouette. The Butterfly Effect Revisited}
+      \field{year}{2013}
+      \keyw{Chaotic Dynamics (nlin.CD),FOS: Physical sciences,FOS: Physical sciences,37D45}
+    \endentry
+    \entry{lorenz}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b3eeab11b971bbf5ed269c4f19465b91}{%
+           family={Lorenz},
+           familyi={L\bibinitperiod},
+           given={Edward\bibnamedelima N.},
+           giveni={E\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston MA, USA}%
+      }
+      \list{publisher}{1}{%
+        {American Meteorological Society}%
+      }
+      \strng{namehash}{b3eeab11b971bbf5ed269c4f19465b91}
+      \strng{fullhash}{b3eeab11b971bbf5ed269c4f19465b91}
+      \strng{bibnamehash}{b3eeab11b971bbf5ed269c4f19465b91}
+      \strng{authorbibnamehash}{b3eeab11b971bbf5ed269c4f19465b91}
+      \strng{authornamehash}{b3eeab11b971bbf5ed269c4f19465b91}
+      \strng{authorfullhash}{b3eeab11b971bbf5ed269c4f19465b91}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Atmospheric Sciences}
+      \field{number}{2}
+      \field{title}{Deterministic Nonperiodic Flow}
+      \field{volume}{20}
+      \field{year}{1963}
+      \field{pages}{130\bibrangedash 141}
+      \range{pages}{12}
+    \endentry
+    \entry{rossler}{article}{}
+      \name{author}{1}{}{%
+        {{hash=bac475fe8fc8434c691c57e801cfdb81}{%
+           family={Rossler},
+           familyi={R\bibinitperiod},
+           given={Otto},
+           giveni={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{bac475fe8fc8434c691c57e801cfdb81}
+      \strng{fullhash}{bac475fe8fc8434c691c57e801cfdb81}
+      \strng{bibnamehash}{bac475fe8fc8434c691c57e801cfdb81}
+      \strng{authorbibnamehash}{bac475fe8fc8434c691c57e801cfdb81}
+      \strng{authornamehash}{bac475fe8fc8434c691c57e801cfdb81}
+      \strng{authorfullhash}{bac475fe8fc8434c691c57e801cfdb81}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics Letters A}
+      \field{month}{07}
+      \field{title}{An Equation for Continuous Chaos}
+      \field{volume}{57}
+      \field{year}{1976}
+      \field{pages}{397\bibrangedash 398}
+      \range{pages}{2}
+    \endentry
+    \entry{SENECH}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=1c68a374c19b3e6d2b51f2f0ef55cdb0}{%
+           family={S^^c3^^a9n^^c3^^a9chal},
+           familyi={S\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{1c68a374c19b3e6d2b51f2f0ef55cdb0}
+      \strng{fullhash}{1c68a374c19b3e6d2b51f2f0ef55cdb0}
+      \strng{bibnamehash}{1c68a374c19b3e6d2b51f2f0ef55cdb0}
+      \strng{authorbibnamehash}{1c68a374c19b3e6d2b51f2f0ef55cdb0}
+      \strng{authornamehash}{1c68a374c19b3e6d2b51f2f0ef55cdb0}
+      \strng{authorfullhash}{1c68a374c19b3e6d2b51f2f0ef55cdb0}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{M^^c3^^a9thodes num^^c3^^a9riques et simulations}
+      \field{year}{2020}
+    \endentry
+    \entry{LEswiki}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Lyapunov exponent --- {Wikipedia}{,} The Free Encyclopedia}
+      \field{year}{2023}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
