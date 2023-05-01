@@ -24,7 +24,7 @@
 
 #### `./PHQ404_devoirs/`
 
-Contient les dépôts des 4 devoirs résolus pour le cours.
+Contient les dépôts des 4 devoirs résolus pour le cours. Ceux-ci sont cependant privés et contenus dans l'organisation GitHub liée à ce cours.
 
 #### `./attractors/`
 
