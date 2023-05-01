@@ -8,7 +8,7 @@
 <br />
 
 <div align="center">
-  Ce dépôt est essentiellement le contenu du cours PHQ-404 c.-à.-d. la solution aux devoirs, le projet final ainsi que les notes de cours.
+  Ce dépôt est essentiellement le contenu du cours de simulation et méthodes numériques de l'Université de Sherbrooke (PHQ-404) c.-à.-d. la solution aux devoirs, le projet final ainsi que les notes de cours.
 </div>
 
 <br />
