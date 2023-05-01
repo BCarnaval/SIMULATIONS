@@ -1,8 +1,8 @@
 <h1 align="center">PHQ-404 Méthodes numériques et simulations</h1>
 
 <div align="center">
-  <img width="380" height="320" src="./attractors/attractors/figs/trajectories/traj_lorenz.png">
-  <img width="380" height="320" src="./attractors/attractors/figs/trajectories/traj_bouali.png">
+  <img width="360" height="320" src="./attractors/attractors/figs/trajectories/traj_lorenz.png">
+  <img width="360" height="320" src="./attractors/attractors/figs/trajectories/traj_bouali.png">
 </div>
 
 <br />
